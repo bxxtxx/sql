@@ -1,0 +1,6 @@
+SELECT *
+FROM prod;
+
+
+SELECT PROD_ID , PROD_NAME
+FROM prod;
