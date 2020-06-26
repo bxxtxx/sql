@@ -223,7 +223,52 @@ WHERE userid IN ('brown', 'cony', 'sally');
 
 
 
+SELECT mem_id, mem_name
+FROM member
+WHERE mem_name like '이%';
 
+
+SELECT *
+FROM emp
+WHERE comm IS NOT NULL;
+
+
+SELECT *
+FROM emp
+WHERE comm NOT IN (300,500) OR comm is NULL;
+
+
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN' 
+  AND hiredate >= TO_DATE('19810601','yyyymmdd'); 
                    
             
+SELECT *
+FROM emp
+WHERE deptno != 10
+  AND hiredate >= TO_DATE('19810601','yyyymmdd');
                    
+                   
+SELECT *
+FROM emp
+WHERE deptno NOT IN (10)
+  AND hiredate >= TO_DATE('19810601','yyyymmdd');
+  
+  
+SELECT *
+FROM emp
+WHERE deptno IN (20, 30)
+  AND hiredate >= TO_DATE('19810601','yyyymmdd');
+  
+  
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN'
+   OR hiredate >= TO_DATE('19810601','yyyymmdd'); 
+   
+   
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN'
+   OR empno like '78%' 
