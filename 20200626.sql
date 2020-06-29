@@ -238,5 +238,16 @@ ORDER BY loc desc;
 
 SELECT *
 FROM emp
-WHERE comm > 0
-ORDER BY comm desc, empno desc;
+WHERE mgr IS NOT NULL
+ORDER BY job, empno desc;
+
+
+SELECT *
+FROM emp
+WHERE deptno IN(10, 30) AND sal >1500
+ORDER BY ename desc;
+
+--사실 OR는 잘 안씀!
+
+
+
