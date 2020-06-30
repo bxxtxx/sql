@@ -17,8 +17,8 @@
 
 
 
-SELECT ename, TO_CHAR(hiredate, 'YYYY-MM-DD'),
-       MONTHS_BETWEEN(SYSDATE, hiredate)
+SELECT ename, TO_CHAR(hiredate, 'YYYY-MM-DD') hiredate2,
+       ROUND(MONTHS_BETWEEN(SYSDATE, hiredate), 2) m_bw
 FROM emp;
 
 
@@ -37,7 +37,7 @@ FROM dual;
 
 LAST_DAY : 해당 일자가 속한 월의 마지막 일자를 반환
 
-SELECT LAST_DAY(TO_DATE('2020/06/05','YYYY/MM/DD'))
+SELECT LAST_DAY(TO_DATE('2020/06/05','YYYY/MM/DD')) last_day
 FROM dual;
 
 
@@ -45,7 +45,7 @@ FROM dual;
 LAST_DAY는 있지만 FIRST_DAY는 없다 ==> 모든 월의 첫번째 날짜는 동일(1일)
 SYSDATE : 20200630 ==> 20200601 로 하고싶다?
 
-
+[실습]
 1.SYSDATE를 문자로 변경하는 포맷은 YYYYMM
 2.1번의 결과에다가 문자열 결합을 통해 '01' 문자를 뒤에 붙여준다.
 
@@ -58,6 +58,9 @@ TO_DATE('201602', 'YYYYMM') --다른 데이터는 가장 작은 값으로 들어
 SELECT :day param, MOD(TO_CHAR((LAST_DAY(TO_DATE(CONCAT(:day, '01'), 'YYYYMMDD'))),'YYYYMMDD'), 100) dy
 FROM dual;
 
+
+SELECT TO_CHAR(TO_DATE('201602','YYYYMM'), 'YYYY/MM/DD HH24:MI:SS') time
+FROM dual;
 
 
 
@@ -186,11 +189,12 @@ FROM TABLE(dbms_xplan.display);
 
 sal(NUMBER) 컬럼의 값을 문자열 포멧팅 적용
 
-SELECT ename, sal, TO_CHAR(sal, 'L9,999.00')
+SELECT ename, sal, TO_CHAR(sal, 'L9,999.00') sal2
 FROM emp;
 
 
-SELECT ename, sal, TO_NUMBER(TO_CHAR(sal, 'L9,999.00'),'L9,999.00')
+SELECT ename, sal, TO_CHAR(sal, 'L9,999.00')to_char ,
+                   TO_NUMBER(TO_CHAR(sal, 'L9,999.00'),'L9,999.00') to_num
 FROM emp;
 
 
