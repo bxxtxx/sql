@@ -55,7 +55,8 @@ IN-LINE : 직접 기술했다. 어딘가 저장을 한게 아니라 그 자리�
 --view : sql, SELECT의 결과를 하나의 테이블처럼 사용 할 수 있음
 
 SELECT empno, ename
-FROM emp;
+FROM emp
+ORDER BY ename;
 
 
 SELECT ROWNUM, empno, ename
@@ -283,7 +284,7 @@ ex : 현재 날짜에서 3시간 뒤 데이트?
 1분 ==> 1/24/60
 3시간 ==> 3/24
 
-SELECT SYSDATE + (1/24)*3
+SELECT SYSDATE now,SYSDATE + (1/24)*3 after_3
 FROM dual;
 
 
@@ -294,7 +295,7 @@ FROM dual;
 
 
 데이트 표현하는 방법
-1. 데이트 리터널 : NLS_SESSION_PARAMITER 설정에 따르기 떄문에
+1. 데이트 리터널 : NLS_SESSION_PARAMETER 설정에 따르기 떄문에
                  DBMS 환경 마다 다르게 인식될 수 있음
 2. TO_DATE : 문자열을 날짜로
 
