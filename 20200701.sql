@@ -1,5 +1,3 @@
-
-
 DECODE : 조건에 따라 반환 값이 다라지는 함수
          ==> 비교, JAVA (IF), SQL - case와 비슷
          단, 비교 연산이 ( = ) 만 가능
@@ -110,7 +108,8 @@ java : 배열, 객체(Class), thread.....
 SQL : GROUP함수
 
 
-DELETE emp
+DELETE em1p13
+
 WHERE empno = 9999;
 COMMIT;
 
