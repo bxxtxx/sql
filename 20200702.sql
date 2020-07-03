@@ -273,7 +273,7 @@ join 0_2~0_4 3문제
 SELECT empno, ename, sal, emp.deptno, dname
 FROM emp, dept
 WHERE emp.deptno = dept.deptno
-  AND sal > 2500
+  AND sal > 2500;
 
 
 SELECT empno, ename, sal, emp.deptno, dname
@@ -289,6 +289,4 @@ WHERE emp.deptno = dept.deptno
   AND sal > 2500
   AND empno > 7600
   AND dname in ('RESEARCH');
-  
-  
   
