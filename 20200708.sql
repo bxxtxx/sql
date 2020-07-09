@@ -158,3 +158,6 @@ FROM product LEFT OUTER JOIN cycle ON (product.pid = cycle.pid AND cid = 1);
 
 
 
+
+
+
