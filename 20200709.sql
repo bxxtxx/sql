@@ -341,6 +341,45 @@ UPDATE dept SET dname = '대덕it', loc = '대전'
 WHERE deptno = 90;
 
 
+SELECT *
+FROM emp;
+
+INSERT INTO emp VALUES (8000, 'BAEBAE', 'STUDENT', 7782, SYSDATE, 800, 0, 40);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
