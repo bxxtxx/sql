@@ -290,4 +290,23 @@ Predicate Information (identified by operation id):
 
 
 
+
+
+
+
+★요 즘 대 세 
+
+javascript => Node.js, Vue.js, React.js
+
+CSS => scss
+
+
+
+
+
+
+
+
+
+
     
