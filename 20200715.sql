@@ -16,7 +16,7 @@ sequence - 중복되지 않는 정수값을 반환해주는 객체
 index - 테이블의 일부 컬럼을 기준으로 미리 정렬해 놓은 데이터
         ==> 테이블 없이 단독적으로 생성 불가, 특정 테이블에 종속
             table 삭제를 하면 관련 인덱스도 같이 삭제
-            
+
             
             
 
@@ -154,10 +154,9 @@ FROM TABLE(dbms_xplan.display);
 
 
 
-
 ALTER TABLE emp ADD CONSTRAINT pk_emp PRIMARY KEY (empno);
-ALTER TABLE emp ADD CONSTRAINTS fk_emp FOREIGN KEY (deptno)
-                                       REFERENCES dept (deptno);
+ALTER TABLE emp ADD CONSTRAINT fk_emp FOREIGN KEY (deptno)
+                                      REFERENCES dept (deptno);
 
 접근방식 : emp 1. table full access, 2.인덱스 * 4 : 방법 5가지 존재
           dept 1. table full_access, 2. 인덱스 * 1 : 방법 2가지
@@ -208,8 +207,6 @@ DROP INDEX idx_dept_test2_03;
 
 -- optimizer : 실행계획 해주는애                rule based optimizer  : oracle 10 이전                      cost based optimizer : oracle 10 이후
 
-
-
 EXPLAIN PLAN FOR
 SELECT *
 FROM emp
@@ -233,7 +230,6 @@ FROM TABLE(dbms_xplan.display);
 
 
 DROP INDEX idx_nu_emp_04;
-
 
 
 EXPLAIN PLAN FOR 

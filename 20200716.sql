@@ -1,5 +1,3 @@
-
-
 실행계획
 
 개발자가 SQL 을 dbms에 요청을 하더라도
@@ -31,8 +29,6 @@ WHERE empno = 7698;
 SELECT /* plan_test */ *
 FROM emp
 WHERE empno = 7369;    --이곳도 다른 SQL로 인식 :: 그래서 우리가 바인딩 변수를 사용합니다~~~~~~~ / DBMS적 측면
-
-
 
 
 
