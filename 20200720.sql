@@ -244,7 +244,7 @@ ALTER TABLE dept_test ADD (empcnt NUMBER(8));
 UPDATE dept_test SET empcnt = (SELECT COUNT(*)
                                FROM emp
                                WHERE dept_test.deptno = emp.deptno
-                               GROUP BY deptno);
+                               );
 
 
 SELECT *
