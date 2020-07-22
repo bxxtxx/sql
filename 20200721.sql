@@ -114,6 +114,26 @@ LEVEL  --행의 번호정도로 생각하자
 
 
 
+
+
+'202007'
+
+SELECT MIN(DECODE(d,1,day)), MIN(DECODE(d,2,day)), MIN(DECODE(d,3,day)), MIN(DECODE(d,4,day)), 
+                      MIN(DECODE(d,5,day)), MIN(DECODE(d,6,day)), MIN(DECODE(d,7,day))
+FROM (SELECT TO_DATE('202007','YYYYMM') + LEVEL - 1 day, 
+             TO_CHAR(TO_DATE('202007','YYYYMM') + LEVEL - 1,'D') d,
+             (LEVEL + TO_CHAR(TO_DATE('202007','YYYYMM'), 'D') - 2) temp
+      FROM dual
+      CONNECT BY LEVEL <= TO_CHAR(LAST_DAY(TO_DATE('202007','YYYYMM')),'DD'))
+GROUP BY TRUNC(temp/7)
+ORDER BY TRUNC(temp/7);
+
+
+
+
+
+
+
 SELECT MIN(DECODE(d,1,day)) sun,  MIN(DECODE(d,2,day)) mon,  MIN(DECODE(d,3,day)) tue,  
        MIN(DECODE(d,4,day)) wed,  MIN(DECODE(d,5,day)) thu,  MIN(DECODE(d,6,day)) fri,  MIN(DECODE(d,7,day)) sat
 FROM(SELECT TO_DATE(:yyyymm,'YYYYMM') + LEVEL - 1 day , 
@@ -127,8 +147,8 @@ ORDER BY TRUNC(temp/7);
 
 
 --MAX, MIN, SUM ==> MIN 이 좋아
-SELECT MIN(DECODE(dt, '01', sum, 0)) jan, MIN(DECODE(dt, '02', sum, 0)) feb, MIN(DECODE(dt, '03', sum, 0)) mar,
-       MIN(DECODE(dt, '04', sum, 0)) apr, MIN(DECODE(dt, '05', sum, 0)) may, MIN(DECODE(dt, '06', sum, 0)) jun
+SELECT MAX(DECODE(dt, '01', sum, 0)) jan, MAX(DECODE(dt, '02', sum, 0)) feb, MAX(DECODE(dt, '03', sum, 0)) mar,
+       MAX(DECODE(dt, '04', sum, 0)) apr, MAX(DECODE(dt, '05', sum, 0)) may, MAX(DECODE(dt, '06', sum, 0)) jun
 FROM(SELECT TO_CHAR(dt, 'MM') dt, SUM(sales) sum
      FROM sales
      GROUP BY  TO_CHAR(dt, 'MM')) a;
@@ -137,9 +157,8 @@ FROM(SELECT TO_CHAR(dt, 'MM') dt, SUM(sales) sum
 
 
 
-
-SELECT MIN(DECODE(d,1,day)), MIN(DECODE(d,2,day)), MIN(DECODE(d,3,day)), MIN(DECODE(d,4,day)),
-       MIN(DECODE(d,5,day)), MIN(DECODE(d,6,day)), MIN(DECODE(d,0,day))
+SELECT MIN(DECODE(d,1,day)) sun, MIN(DECODE(d,2,day)) mon, MIN(DECODE(d,3,day)) tue, MIN(DECODE(d,4,day)) wed,
+       MIN(DECODE(d,5,day)) thu, MIN(DECODE(d,6,day)) fri, MIN(DECODE(d,0,day)) sat
 FROM
     (SELECT TO_DATE(:YYYYMM,'YYYYMM') + LEVEL - TO_CHAR(TO_DATE(:YYYYMM,'YYYYMM'),'D') day, 
             TRUNC((LEVEL-1)/7) tr,
@@ -150,7 +169,6 @@ FROM
                           + TO_CHAR(TO_DATE(:YYYYMM,'YYYYMM'),'D') - 1 )
 GROUP BY tr
 ORDER BY tr;
-
 
 -----------------------------------------------
 
@@ -187,6 +205,50 @@ CREATE TABLE mem_test (
     CONSTRAINTS pk_member PRIMARY KEY (mem_no)
     
 );
+
+
+
+
+
+
+
+
+
+SELECT MIN(DECODE(d,1,day)) sun,  MIN(DECODE(d,2,day)) mon,  MIN(DECODE(d,3,day)) tue,  
+       MIN(DECODE(d,4,day)) wed,  MIN(DECODE(d,5,day)) thu,  MIN(DECODE(d,6,day)) fri,  MIN(DECODE(d,7,day)) sat
+FROM(SELECT TO_DATE(:yyyymm,'YYYYMM') + LEVEL - 1 day , 
+            TO_CHAR((TO_DATE(:yyyymm,'YYYYMM') + LEVEL - 1), 'D') d,
+            TO_CHAR((TO_DATE(:yyyymm,'YYYYMM') + LEVEL), 'iw') iw
+     FROM dual
+     CONNECT BY LEVEL <= TO_CHAR(LAST_DAY(TO_DATE(:yyyymm,'YYYYMM')),'DD')) a
+GROUP BY iw
+ORDER BY sat;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
